@@ -20,7 +20,7 @@ const step = (title, web, app, summary, webText, appText, nextText, options={}) 
 
 const STAFF = [
  {name:'Trang chủ & đào tạo', summary:'Thiết lập người dùng và truy cập các chức năng từ App.', pages:[
-   step('Trang chủ nhân viên',ref('user-list','Cấu hình vận hành → UserList'),'staff-home','Từ Web quản lý tài khoản, nhân viên mở App để truy cập chức năng hằng ngày.','UserList hỗ trợ tra cứu, phân loại và quản lý tài khoản nhân viên.','Trang chủ App có lối vào Lịch làm việc, Đào tạo, Quicktest, Báo cáo và Thư viện hình.','UserList là cấu hình người dùng, không phải một màn hình báo cáo SUP.'),
+   step('Trang chủ',ref('user-list','Cấu hình vận hành → UserList'),'staff-home','Từ Web quản lý tài khoản, nhân viên mở App để truy cập chức năng hằng ngày.','UserList hỗ trợ tra cứu, phân loại và quản lý tài khoản nhân viên.','Trang chủ App có lối vào Lịch làm việc, Đào tạo, Quicktest, Báo cáo và Thư viện hình.','UserList là cấu hình người dùng, không phải một màn hình báo cáo SUP.'),
    step('Nội dung đào tạo',missing('Thiết lập nội dung đào tạo','assets/web/staff-training.png'),'noidungdaotao','Nhân viên truy cập chương trình đào tạo, tiếp tục khóa học và theo dõi tiến độ trên App.','Màn hình thiết lập hoặc phân phối nội dung đào tạo trên Web chưa được cung cấp.','App hiển thị khóa học nổi bật, tiến độ, danh sách bài học và các khóa học khác.','Nhân viên chọn bài học hoặc tiếp tục khóa học đang thực hiện.')
  ]},
  {name:'Lịch & phân ca', summary:'Cấu hình ca, phân công cửa hàng và các yêu cầu phát sinh.', pages:[
@@ -77,42 +77,26 @@ const STAFF = [
 ];
 
 const MANAGER = [
- {name:'Dashboard SUP', summary:'Bốn ảnh thiết kế Dashboard SUP đã được ghép theo đúng nội dung.', pages:[
-   step('Tổng quan',sup('overview','Dashboard SUP · Tổng quan'),'manager-home','Góc nhìn tổng quan dành cho quản lý khu vực trên Web và App.','Bản thiết kế SUP có tổng hợp chỉ số, hiệu quả hoạt động và các cảnh báo.','App quản lý mở Trang chủ để theo dõi tình hình đội ngũ.','Ảnh Web SUP là thiết kế được cung cấp, không phải dữ liệu từ FoodEmpire.',{phase:'Web báo cáo ↔ App quản lý'}),
-   step('Báo cáo số bán',sup('sales','Dashboard SUP · Báo cáo số bán'),'manager-sales-today','Tổng hợp số bán trên Web, xem nhanh theo ngày trên App SUP.','Dashboard thiết kế có thẻ chỉ số và đồ thị doanh số theo mốc thời gian.','App quản lý có màn doanh số hôm nay.','Để minh họa MTD/cửa hàng, chuyển sang nhóm Báo cáo doanh số.'),
-   step('Báo cáo nhân sự',sup('people','Dashboard SUP · Báo cáo nhân sự'),'manager-employee-list','Theo dõi nhân sự và đi vào danh sách nhân viên trên App.','Dashboard thiết kế có chỉ số và bảng/biểu đồ nhân sự.','App có màn danh sách nhân viên thuộc phạm vi quản lý.','Khi cần xem chi tiết từng người, chọn màn Chi tiết nhân viên.'),
-   step('Báo cáo chấm công',sup('attendance','Dashboard SUP · Báo cáo chấm công'),'manager-attendance-missing','Theo dõi chấm công toàn đội ngũ trên Web và các trường hợp chưa chấm trên App.','Dashboard thiết kế có báo cáo chấm công và trạng thái đi làm.','App có màn danh sách chưa chấm công.','Dữ liệu hai ảnh minh họa không nhất thiết cùng một ngày / nhân viên.')
- ]},
- {name:'Báo cáo doanh số', summary:'Doanh số Hôm nay, MTD và các cửa hàng trong bộ App SUP.', pages:[
-   step('Doanh số hôm nay',sup('sales','Dashboard SUP · Báo cáo số bán'),'manager-sales-today','So sánh tổng quan số bán Web và chi tiết nhanh trong App.','Web thiết kế hiển thị chỉ số và biểu đồ kết quả theo thời gian.','App có màn xem doanh số trong ngày.','Không khẳng định số liệu thiết kế Web khớp số liệu App.'),
-   step('Doanh số MTD',sup('sales','Dashboard SUP · Báo cáo số bán'),'manager-sales-mtd','Đổi kỳ xem sang doanh số lũy kế tháng trên App.','Chưa có ảnh Web lọc đúng chế độ MTD; đang dùng tổng quan số bán.','App SUP có màn MTD.','Nên bổ sung trạng thái lọc MTD nếu Web thực tế hỗ trợ.',{caution:'Ảnh Web hiện không phải kết quả lọc MTD.'}),
-   step('Hôm nay · Nguyễn Huệ',sup('sales','Dashboard SUP · Báo cáo số bán'),'manager-today-nguyen-hue','Đi từ báo cáo ngày sang kết quả chi tiết cửa hàng Nguyễn Huệ trên App.','Ảnh Web đang là dashboard số bán tổng hợp.','App cho thấy số bán của cửa hàng được chọn trong ngày.','Chưa có ảnh Web lọc riêng cửa hàng Nguyễn Huệ.'),
-   step('Hôm nay · Cống Quỳnh',sup('sales','Dashboard SUP · Báo cáo số bán'),'manager-today-cong-quynh','Xem màn hình kết quả cửa hàng Cống Quỳnh trên App.','Ảnh Web đang là dashboard số bán tổng hợp.','App có chế độ xem kết quả ngày theo cửa hàng Cống Quỳnh.','Chưa có ảnh Web lọc riêng cửa hàng Cống Quỳnh.'),
-   step('MTD · Nguyễn Huệ',sup('sales','Dashboard SUP · Báo cáo số bán'),'manager-mtd-nguyen-hue','Xem doanh số MTD theo cửa hàng Nguyễn Huệ.','Web thiết kế mới có dashboard tổng quan.','App có màn MTD của cửa hàng Nguyễn Huệ.','Bổ sung Web có bộ lọc MTD theo cửa hàng nếu cần đối chiếu chính xác.'),
-   step('MTD · Cống Quỳnh',sup('sales','Dashboard SUP · Báo cáo số bán'),'manager-mtd-cong-quynh','Xem doanh số MTD theo cửa hàng Cống Quỳnh.','Web thiết kế mới có dashboard tổng quan.','App có màn MTD của cửa hàng Cống Quỳnh.','Bổ sung Web có bộ lọc MTD theo cửa hàng nếu cần đối chiếu chính xác.')
- ]},
- {name:'Nhân viên', summary:'Báo cáo nhân sự Web và màn hình danh sách/chi tiết App.', pages:[
-   step('Danh sách nhân viên',sup('people','Dashboard SUP · Báo cáo nhân sự'),'manager-employee-list','Từ báo cáo nhân sự trên Web đi đến danh sách nhân viên ở App.','Web thiết kế SUP phản ánh tình hình nhân sự toàn đội ngũ.','App cho phép xem danh sách nhân viên.','UserList của Web Admin được chụp riêng, nhưng đó là cấu hình người dùng, không phải báo cáo SUP.'),
-   step('Chi tiết nhân viên',sup('people','Dashboard SUP · Báo cáo nhân sự'),'manager-employee-detail','Từ tổng quan nhân sự đi sâu vào thông tin một người trên App.','Web thiết kế cung cấp góc nhìn tổng hợp, chưa có ảnh Web chi tiết nhân viên.','App có màn hình chi tiết nhân viên.','Nếu muốn đối chiếu một người ở cả Web và App, cần xin ảnh Web có bộ lọc/chi tiết nhân viên.')
- ]},
- {name:'Chấm công', summary:'Báo cáo tổng hợp SUP và kết quả chấm công tham chiếu.', pages:[
-   step('Tình hình chấm công',sup('attendance','Dashboard SUP · Báo cáo chấm công'),'manager-attendance-missing','Xem chỉ số tổng hợp và danh sách nhân viên chưa chấm công.','Web thiết kế có báo cáo chấm công toàn đội ngũ.','App SUP có màn danh sách chưa chấm công.','Kết quả chi tiết FoodEmpire có thể xem ở các màn tham chiếu tiếp theo.'),
-   step('Thống kê chấm công',ref('dashboard-attendant','Dashboard → DB Attendant'),'manager-attendance-missing','Tham chiếu biểu đồ tình hình chấm công theo ngày trên Web hiện có.','FoodEmpire DB Attendant có biểu đồ kế hoạch và thực tế trong kỳ lọc.','App SUP thể hiện trường hợp cần chú ý.','Web FoodEmpire khác dự án MacCoffee; số liệu không được coi là dữ liệu chung.'),
-   step('Kiểm tra hình ảnh',ref('attendance-profile-charts','Báo cáo kiểm tra hình ảnh chấm công'),'manager-attendance-missing','Theo dõi tình trạng xác minh hình ảnh trên Web và tình trạng chưa chấm trên App.','Web báo cáo phân loại tình trạng ảnh chấm công.','App SUP xem nhân viên cần theo dõi.','Hai màn đang minh họa hai góc nhìn cùng chủ đề, không cùng bản ghi.')
- ]},
- {name:'Báo cáo nhanh', summary:'Báo cáo nhanh SUP và hai ảnh Web FoodEmpire để đối chiếu bố cục; dữ liệu khác dự án.', pages:[
+ {name:'Báo cáo nhanh', summary:'Xem nhanh các chỉ số quản lý quan trọng trên Web và App.', pages:[
    step('Báo cáo nhanh',sup('overview','Dashboard SUP · Tổng quan'),'manager-quick-report','Bản Web SUP hiển thị tổng quan, App có màn báo cáo nhanh.','Dashboard thiết kế tổng hợp các nhóm chỉ số quản lý.','App có màn báo cáo nhanh tương ứng.','Chưa có ảnh Web trang báo cáo nhanh riêng ngoài Dashboard tổng quan.'),
-   step('Dashboard FoodEmpire (tham chiếu)',ref('activation-dashboard','FoodEmpire → Activation Dashboard'),'manager-home','Xem ảnh Dashboard FoodEmpire/Vinamilk đã chụp như một ví dụ bố cục Web khác; App đi kèm chỉ là Trang chủ quản lý MacCoffee.','Ảnh Web có nhãn Vinamilk và các nhóm số liệu Chấm công, Số bán, Tồn kho, Đổi quà và Mẫu thử. Đây KHÔNG phải Dashboard MacCoffee.','Màn App bên phải là Trang chủ quản lý MacCoffee, không kết nối với ảnh Web đang xem.','Bước này chỉ nhằm lưu và xem lại hình Web người dùng cung cấp, không được trình bày như một luồng dữ liệu thực tế.',{phase:'Web tham chiếu · không đồng bộ',caution:'Khác thương hiệu và khác dữ liệu: FoodEmpire/Vinamilk ≠ MacCoffee.'}),
-   step('KPI Performance (tham chiếu)',ref('kpi-performance','Report → KPI Performance'),'manager-quick-report','Xem trang báo cáo KPI Performance mà bạn đã chụp; bảng hiện không có kết quả.','Ảnh Web hiển thị bộ lọc khu vực, nhân viên, thời gian và các cột Total Score, AVG Score nhưng hiện ghi No results found.','App MacCoffee minh họa góc nhìn Báo cáo nhanh, không có bằng chứng về một bản ghi KPI tương ứng.','Chỉ dùng để giới thiệu loại báo cáo và giao diện tìm kiếm, không suy diễn số liệu.',{phase:'Web tham chiếu · chưa có dữ liệu',caution:'Màn KPI Performance hiện chưa có dữ liệu và chưa xác nhận áp dụng cho MacCoffee.'})
  ]},
- {name:'Xuất – Nhập – Tồn', summary:'Màn hình tồn kho trên App có sẵn, Web tương ứng chưa được cung cấp.', pages:[
-   step('Xuất – Nhập – Tồn',missing('Web báo cáo Xuất – Nhập – Tồn','assets/web/sup-inventory.png'),'manager-inventory','SUP theo dõi xuất, nhập, tồn trên App; chưa có ảnh màn báo cáo Web riêng.','Cần xin màn Web báo cáo tồn kho nếu hệ thống có.','App quản lý đã có màn Xuất – Nhập – Tồn từ bộ thiết kế gốc.','Không dùng tiêu đề Tồn kho trong Vinamilk Activation Dashboard để thay thế báo cáo chi tiết.',{caution:'Chưa có ảnh Web Xuất – Nhập – Tồn thực tế.'})
+ {name:'Báo cáo doanh số', summary:'Theo dõi doanh số lũy kế trong tháng.', pages:[
+   step('Doanh số MTD',sup('sales','Dashboard SUP · Báo cáo số bán'),'manager-sales-mtd','Đổi kỳ xem sang doanh số lũy kế tháng trên App.','Chưa có ảnh Web lọc đúng chế độ MTD; đang dùng tổng quan số bán.','App SUP có màn MTD.','Nên bổ sung trạng thái lọc MTD nếu Web thực tế hỗ trợ.',{caution:'Ảnh Web hiện không phải kết quả lọc MTD.'}),
+ ]},
+ {name:'Nhân sự', summary:'Báo cáo nhân sự Web và danh sách nhân viên trên App.', pages:[
+   step('Danh sách nhân viên',sup('people','Dashboard SUP · Báo cáo nhân sự'),'manager-employee-list','Từ báo cáo nhân sự trên Web đi đến danh sách nhân viên ở App.','Web thiết kế SUP phản ánh tình hình nhân sự toàn đội ngũ.','App cho phép xem danh sách nhân viên.','UserList của Web Admin được chụp riêng, nhưng đó là cấu hình người dùng, không phải báo cáo SUP.'),
+ ]},
+ {name:'Chấm công', summary:'Theo dõi tình hình chấm công của đội ngũ.', pages:[
+   step('Báo cáo chấm công',ref('Baocaochamcong','Báo cáo chấm công'),'manager-attendance-missing','Xem chỉ số tổng hợp và danh sách nhân viên chưa chấm công.','Web hiển thị báo cáo chấm công của đội ngũ.','App SUP có màn danh sách chưa chấm công.','Đối chiếu tình hình chấm công giữa Web và App.'),
+ ]},
+ {name:'Xuất – Nhập – Tồn', summary:'Theo dõi tình hình xuất, nhập và tồn kho trên Web và App.', pages:[
+   step('Xuất – Nhập – Tồn',ref('Nhap-xuat-ton','Xuất – Nhập – Tồn'),'manager-inventory','SUP theo dõi tình hình xuất, nhập và tồn kho trên Web và App.','Web hiển thị báo cáo Xuất – Nhập – Tồn.','App quản lý hiển thị số lượng nhập, bán và tồn kho.','Đối chiếu các chỉ số hàng hóa giữa Web và App.')
  ]}
 ];
 
 // Nội dung diễn giải ngắn cho khách hàng. Chỉ sửa câu chữ; không đổi ảnh, chức năng hay luồng.
 const FLOW_COPY = {
-  'Trang chủ nhân viên': [
+  'Trang chủ': [
     'Web quản lý hồ sơ, App hiển thị mục tiêu, ca làm và chức năng cá nhân.',
     'UserList quản lý hồ sơ, vai trò, SUP và trạng thái nhân viên.',
     'Trang chủ hiển thị MTD 300/350, doanh số ngày 2 và sáu lối tắt nghiệp vụ.'
@@ -374,9 +358,8 @@ const FLOW_SUMMARY = {
     'Thông báo & tài liệu':'Quản lý thông báo và truy cập tài liệu làm việc.'
   },
   manager: {
-    'Dashboard SUP':'Xem nhanh tình hình hoạt động của đội ngũ.',
     'Báo cáo doanh số':'Theo dõi doanh số theo thời gian và cửa hàng.',
-    'Nhân viên':'Theo dõi nhân sự và xem thông tin chi tiết.',
+    'Nhân sự':'Theo dõi nhân sự và xem thông tin chi tiết.',
     'Chấm công':'Xem tình trạng chấm công của đội ngũ.',
     'Báo cáo nhanh':'Tổng hợp những chỉ số quản lý quan trọng.',
     'Xuất – Nhập – Tồn':'Theo dõi hàng xuất, hàng nhập và lượng tồn kho.'
@@ -412,7 +395,7 @@ const SCENARIOS = [
   {id:'attendance',name:'Chấm công',steps:[
     {name:'App chấm công',role:'staff',flow:'Chấm công',page:'Xác thực khuôn mặt',hint:'Nhân viên thực hiện trên App'},
     {name:'Web theo dõi',role:'staff',flow:'Chấm công',page:'Tổng hợp chấm công',hint:'Tra bảng chấm công theo tháng'},
-    {name:'SUP tổng hợp',role:'manager',flow:'Dashboard SUP',page:'Báo cáo chấm công',hint:'Quản lý xem tình hình đội ngũ'}
+    {name:'SUP tổng hợp',role:'manager',flow:'Chấm công',page:'Báo cáo chấm công',hint:'Quản lý xem tình hình đội ngũ'}
   ]},
   {id:'sales',name:'Báo cáo số bán',steps:[
     {name:'Nhập báo cáo',role:'staff',flow:'Báo cáo số bán',page:'Nhập báo cáo số bán',hint:'Nhập số lượng theo sản phẩm'},
@@ -443,8 +426,6 @@ function drawJourney(){
   const sc=activeScenario(),outer=$('journey');
   if(!sc){outer.hidden=true;return;}
   outer.hidden=false;
-  $('journeyHeading').textContent='Quy trình · '+sc.name;
-  $('journeySub').textContent='Chọn bước để xem Web và App tương ứng';
   const chosen=sc.steps.findIndex(q=>q.role===state.role && q.flow===selectedFlow().name && q.page===selectedStep().title);
   $('journeySteps').innerHTML=sc.steps.map((q,i)=>`<button class="journey-step ${i===chosen?'is-current':''}" type="button" data-journey="${sc.id}" data-journey-step="${i}" aria-current="${i===chosen?'step':'false'}"><span class="journey-index">${i+1}</span><span class="journey-label">${escapeHTML(q.name)}</span></button>`).join('');
   $('journeyNext').disabled=chosen===sc.steps.length-1;
@@ -461,7 +442,7 @@ function goJourney(id,idx){
 /* Với chức năng chưa có ảnh Web thật: CHỈ mô tả nghiệp vụ nhìn thấy được trong App.
    Không tự dựng dữ liệu bảng, con số, tác vụ admin hoặc báo cáo không có trong tư liệu. */
 const BUSINESS_WORKFLOWS = {
-  "Trang chủ nhân viên": [
+  "Trang chủ": [
     "Web UserList: quản lý hồ sơ, vị trí và người phụ trách.",
     "Nhân viên mở Trang chủ trên App sau khi đăng nhập.",
     "Xem chỉ số cá nhân, ca hôm nay và chọn chức năng tác nghiệp."
@@ -717,7 +698,7 @@ const BUSINESS_WORKFLOWS = {
 
 // Diễn giải thao tác trên App dựa trên ảnh màn hình đã được cung cấp.
 const APP_FLOW_COPY = {
-  "Trang chủ nhân viên": [
+  "Trang chủ": [
     "Trang chủ hiển thị chỉ số cá nhân, lịch làm và các chức năng nhanh.",
     [
       "Xem doanh số MTD, doanh số ngày và địa điểm làm việc.",
@@ -1143,22 +1124,26 @@ function renderMissingWeb(item){
 }
 function draw(){
   const flow=selectedFlow(), item=selectedStep(), w=item.web;
+  $('activeFlowLabel').textContent=flow.name;
   $$('[data-role]').forEach(b=>{const ok=b.dataset.role===state.role;b.classList.toggle('is-active',ok);b.setAttribute('aria-pressed',String(ok));});
   $$('[data-mode]').forEach(b=>{const ok=b.dataset.mode===state.mode;b.classList.toggle('is-active',ok);b.setAttribute('aria-pressed',String(ok));});
   $('workspace').className='workspace mode-'+state.mode+(flow.name==='Quick Test đầu ca'?' compact-web-view':'');
   drawJourney();
   $('flowNav').innerHTML=FLOWS[state.role].map((f,i)=>`<button type="button" data-flow="${i}" class="${i===state.flow?'is-active':''}" aria-current="${i===state.flow?'page':'false'}"><span class="flow-number">${i+1}.</span> ${escapeHTML(f.name)}</button>`).join('');
-  $('screenNav').innerHTML=flow.pages.map((p,i)=>`<button type="button" data-page="${i}" class="${i===state.page?'is-active':''}" aria-pressed="${i===state.page}">${escapeHTML(p.title)}</button>`).join('');
+  const pageNav=$('screenNav');
+  pageNav.style.setProperty('--screen-count',flow.pages.length);
+  pageNav.innerHTML=flow.pages.map((p,i)=>`<button type="button" data-page="${i}" class="${i===state.page?'is-active':''}" aria-pressed="${i===state.page}"><span class="screen-page-label">${escapeHTML(p.title)}</span></button>`).join('');
+  pageNav.scrollLeft=0;
   $('flowTitle').textContent=flow.name;
   $('flowSummary').textContent=FLOW_SUMMARY[state.role][flow.name] || flow.summary;
-  $('webLabel').textContent=state.role==='staff'?(flow.name==='Báo cáo số bán'?'Web · Nhập & Xem Báo cáo số bán':'Web · Cấu hình & Theo dõi Nhân viên'):'Web · Báo cáo Quản lý/SUP';
-  $('appLabel').textContent=state.role==='staff'?'Màn hình Mobile Nhân viên':'Màn hình Mobile Quản lý';
+  $('webLabel').textContent='Web';
+  $('appLabel').textContent='Mobile';
   $('appRole').textContent=state.role==='staff'?'NHÂN VIÊN':'QUẢN LÝ/SUP';
   $('webScreenName').textContent=w.title;
   $('webScreenSource').textContent=w.source;
-  $('webScreenSource').hidden=!w.source;
+  $('webScreenSource').hidden=state.role==='manager'||!w.source;
   $('webPhotoStatus').textContent=w.kind==='missing'?'Giao diện demo':w.kind==='design'?'Thiết kế SUP':w.kind==='maccoffee'?'Giao diện minh họa':'Ảnh tham chiếu';
-  $('webPhotoStatus').hidden=w.kind==='reference'||w.kind==='maccoffee';
+  $('webPhotoStatus').hidden=state.role==='manager'||w.kind==='reference'||w.kind==='maccoffee';
   $('webCaptureInfo').classList.toggle('is-reference',w.kind==='reference');
   $('webCaptureInfo').classList.toggle('is-report',w.title.startsWith('Report →'));
   $('webPath').textContent=w.kind==='design'?'FoodEmpire / Dashboard SUP':(w.kind==='reference'||w.kind==='maccoffee')?'FoodEmpire / '+w.title:'FoodEmpire / Web Admin';
@@ -1223,8 +1208,10 @@ function draw(){
   $('appFlowSteps').innerHTML=appFlow[1].map((description,index)=>`<li><span class="business-step-number">${index+1}</span><span class="business-step-text">${escapeHTML(description)}</span></li>`).join('');
   $('prevStep').disabled=state.flow===0&&state.page===0;
   $('nextStep').disabled=state.flow===FLOWS[state.role].length-1&&state.page===flow.pages.length-1;
-  // Keep only the currently selected chip in view without scrolling the document.
-  ['flowNav','screenNav'].forEach(id=>{const node=$(id),active=node.querySelector('.is-active'); if(active)node.scrollLeft=Math.max(0,active.offsetLeft-node.offsetLeft-20);});
+  // Keep the main flow chip visible. The numbered page navigation stays fixed
+  // so selecting another page does not shift the whole 1–2–3 group.
+  const flowNav=$('flowNav'),activeFlow=flowNav.querySelector('.is-active');
+  if(activeFlow)flowNav.scrollLeft=Math.max(0,activeFlow.offsetLeft-flowNav.offsetLeft-20);
 }
 function selectRole(role){if(!FLOWS[role])return;state.role=role;state.flow=0;state.page=0;draw();}
 function selectMode(mode){if(!['dual','web','app'].includes(mode))return;state.mode=mode;draw();}
