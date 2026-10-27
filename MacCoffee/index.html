@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="vi">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="light">
+    <meta name="description" content="MacCoffee — HTML demo Web Setup, App Nhân viên và báo cáo SUP. Ticket HT01642.">
+    <title>Food Empire Holding | Web & App Demo</title>
+    <link rel="stylesheet" href="style.css">
+    <script defer src="script.js"></script>
+</head>
+
+<body>
+    <div class="page-shell">
+        <header class="topbar">
+            <div class="brand" aria-label="Food Empire Holding">
+                <span class="brand-mark brand-flags" aria-hidden="true"><img src="assets/brand/food-empire-flags.png" alt=""></span>
+                <span class="brand-text"><span class="brand-line"><strong>Food Empire Holding</strong><span class="brand-country">VIỆT NAM</span></span><span class="brand-subtitle">Hệ thống Điều hành &amp; Phát triển Nhân viên Thị trường</span></span>
+            </div>
+            <div class="top-controls">
+                <div class="role-switch" role="group" aria-label="Chọn vai trò">
+                    <button type="button" data-role="staff" class="is-active" aria-pressed="true">Nhân viên</button>
+                    <button type="button" data-role="manager" aria-pressed="false">Quản lý/SUP</button>
+                </div>
+                <div class="mode-switch" role="group" aria-label="Chọn chế độ hiển thị">
+                    <button type="button" data-mode="dual" class="is-active" aria-pressed="true"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="4" y="5" width="16" height="14" rx="2"/><path d="M12 5v14"/></svg>Song Song Dual View</button>
+                    <button type="button" data-mode="web" aria-pressed="false"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 17 8 7h12l-3 10H5Z"/></svg>Web Quản lý</button>
+                    <button type="button" data-mode="app" aria-pressed="false"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="7" y="3" width="10" height="18" rx="2"/><path d="M11 17h2"/></svg>Mobile App</button>
+                </div>
+                <button class="language-badge" type="button" aria-label="Ngôn ngữ: Tiếng Việt" title="Tiếng Việt">VI</button>
+                <button class="icon-button" type="button" id="restart" title="Về màn hình đầu" aria-label="Về màn hình đầu"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 11a8 8 0 1 1 2 6M4 4v7h7" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+            </div>
+        </header>
+        <nav class="flowbar" aria-label="Các nhóm chức năng"><span class="flow-caption"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 17 8 7h11l-3 10H5Z"/></svg>Luồng System Flow:</span>
+            <div id="flowNav" class="flow-nav"></div>
+        </nav>
+        <main class="main">
+            <div class="screen-header">
+                <div class="screen-heading"><span class="screen-kicker"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m12 3 2.2 4.8L19 10l-4.8 2.2L12 17l-2.2-4.8L5 10l4.8-2.2L12 3Z"/></svg>Chức năng đang xem</span>
+                    <h1 id="flowTitle">Trang chủ nhân viên</h1>
+                    <p id="flowSummary">Cách Web và App liên kết với nhau</p>
+                </div>
+                <div class="step-controls"><button type="button" class="step-arrow" id="prevStep" aria-label="Mục trước" title="Mục trước">‹</button>
+                    <div id="screenNav" class="screen-nav" aria-label="Chuyển màn hình"></div><button type="button" class="step-arrow" id="nextStep" aria-label="Mục tiếp theo" title="Mục tiếp theo">›</button></div>
+            </div>
+            <section class="journey" id="journey" aria-label="Các bước thực hiện của chức năng" hidden>
+                <div class="journey-intro"><span class="journey-dot" aria-hidden="true"></span><strong id="journeyHeading">Quy trình chức năng</strong><small id="journeySub">Xem màn hình tương ứng ở từng bước</small></div>
+                <div class="journey-steps" id="journeySteps"></div>
+                <button id="journeyNext" type="button" class="journey-next">Bước tiếp theo <span aria-hidden="true">→</span></button>
+            </section>
+            <div id="workspace" class="workspace mode-dual">
+                <section class="web-column" aria-label="Giao diện Web">
+                    <div class="screen-panel web-panel">
+                        <div class="panel-titlebar"><span><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8m-4-4v4"/></svg><strong id="webLabel">Web · Cấu hình &amp; Theo dõi Nhân viên</strong></span>
+                            <button type="button" class="quiet-button" id="expandWeb">Xem lớn ↗</button>
+                        </div>
+                        <div class="browser-chrome" aria-hidden="true"><span class="browser-dots"><i></i><i></i><i></i></span><span class="browser-address" id="webPath">Cấu hình vận hành</span><span class="browser-lock">Web</span></div>
+                        <div class="web-context-bar">
+                            <div class="web-brand-strip" aria-label="Food Empire Holding"><span class="people-mark people-flags" aria-hidden="true"><img src="assets/brand/food-empire-flags.png" alt=""></span><span class="people-brand-text"><strong>Food Empire Holding</strong><small>PEOPLE OPERATIONS</small></span></div>
+                            <div class="capture-info" id="webCaptureInfo">
+                                <div><strong id="webScreenName">Màn hình Web</strong><span id="webScreenSource">Ảnh chụp màn hình thật</span></div><span id="webPhotoStatus" class="source-tag">Ảnh Web</span></div>
+                        </div>
+                        <div id="webFrame" class="web-frame">
+                            <img id="webImage" alt="Ảnh màn hình Web được đối chiếu với chức năng" hidden>
+                            <div id="webMock" class="mock-web" hidden></div>
+                        </div>
+                    </div>
+                    <section class="details" id="details" aria-label="Diễn giải màn hình">
+                        <div class="details-header">
+                            <div><span class="eyebrow">LUỒNG NGHIỆP VỤ</span>
+                                <h2 id="detailTitle">Thiết lập trên Web, sử dụng trên App</h2>
+                            </div><span id="detailPhase" class="phase-label">Web → App</span></div>
+                        <p id="detailLead" class="detail-lead"></p>
+                        <div id="detailCards" class="detail-cards"></div>
+                        <div class="business-flow" aria-label="Quy trình sử dụng">
+                            <h3>Quy trình sử dụng</h3>
+                            <ol id="businessSteps" class="business-steps"></ol>
+                        </div>
+
+                    </section>
+                </section>
+                <div class="app-column">
+                    <aside class="screen-panel app-panel" aria-label="Màn hình App">
+                        <div class="panel-titlebar"><span><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="6" y="2" width="12" height="20" rx="2"/><path d="M11 18h2"/></svg><strong id="appLabel">Mobile App · Nhân viên</strong></span>
+                            <button type="button" class="quiet-button" id="expandApp">Xem lớn ↗</button>
+                        </div>
+                        <div class="app-caption">
+                            <div><strong id="appScreenName">Trang chủ</strong><small id="appScreenContext">Màn hình thiết kế App</small></div><span class="app-role" id="appRole">NHÂN VIÊN</span></div>
+                        <div class="phone-stage">
+                            <div class="phone"><span class="phone-notch" aria-hidden="true"></span>
+                                <div class="phone-viewport" id="phoneViewport"><img id="appImage" alt="Thiết kế màn hình điện thoại" draggable="false"></div>
+                            </div>
+                            <p class="phone-instruction">Cuộn trong điện thoại hoặc chọn “Xem lớn”</p>
+                        </div>
+                    </aside>
+                    <section class="details app-process" id="appProcess" aria-label="Nội dung thao tác trên App">
+                        <p id="appFlowLead" class="detail-lead"></p>
+                        <div class="business-flow app-business-flow">
+                            <h3>Các bước trên App</h3>
+                            <ol id="appFlowSteps" class="business-steps"></ol>
+                        </div>
+                    </section>
+                </div>
+                <aside class="brand-showcase" aria-label="Thương hiệu Food Empire và MacCoffee">
+                    <span class="brand-showcase-label">THƯƠNG HIỆU ĐỒNG HÀNH</span>
+                    <div class="brand-slides" aria-hidden="true">
+                        <figure class="brand-slide"><img src="assets/brands/01_Hillway_Milk_Tea.png" alt=""></figure>
+                        <figure class="brand-slide"><img src="assets/brands/02_Kracks_Sour_Cream_Onion.png" alt=""></figure>
+                        <figure class="brand-slide"><img src="assets/brands/03_Cafe_Pho_Sua_Da.png" alt=""></figure>
+                        <figure class="brand-slide"><img src="assets/brands/04_MacCoffee_Strong.png" alt=""></figure>
+                        <figure class="brand-slide"><img src="assets/brands/05_MacCoffee_Original.png" alt=""></figure>
+                        <figure class="brand-slide"><img src="assets/brands/06_Klassno_3in1.png" alt=""></figure>
+                        <figure class="brand-slide"><img src="assets/brands/07_MacTea_3in1.png" alt=""></figure>
+                    </div>
+                    <span class="brand-showcase-caption">Food Empire Brand Portfolio</span>
+                </aside>
+            </div>
+        </main>
+    </div>
+    <div class="demo-toast" id="demoToast" role="status" aria-live="polite" hidden></div>
+    <div class="modal" id="imageModal" hidden>
+        <div class="modal-shade" id="closeShade"></div>
+        <div class="modal-window" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+            <div class="modal-head"><strong id="modalTitle">Xem ảnh màn hình</strong>
+                <div class="modal-actions"><button id="zoomOut" type="button" aria-label="Thu nhỏ">−</button><button id="zoomFit" type="button">Vừa khung</button><button id="zoomIn" type="button" aria-label="Phóng to">+</button><button id="closeModal" type="button" aria-label="Đóng">×</button></div>
+            </div>
+            <div id="modalScroll" class="modal-scroll"><img id="modalImage" alt="Ảnh màn hình phóng to">
+                <div id="modalMock" class="modal-mock" hidden></div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
